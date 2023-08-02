@@ -1,4 +1,4 @@
-package br.com.projetoconest.api.service;
+package br.com.projetoconest.api.service.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

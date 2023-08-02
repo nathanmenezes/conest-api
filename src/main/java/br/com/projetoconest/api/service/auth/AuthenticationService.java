@@ -1,4 +1,4 @@
-package br.com.projetoconest.api.service;
+package br.com.projetoconest.api.service.auth;
 
 import br.com.projetoconest.api.model.dto.request.SignInRequest;
 import br.com.projetoconest.api.model.dto.request.SignUpRequest;

@@ -1,6 +1,6 @@
 package br.com.projetoconest.api.config;
 
-import br.com.projetoconest.api.service.JwtService;
+import br.com.projetoconest.api.service.auth.JwtService;
 import br.com.projetoconest.api.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
