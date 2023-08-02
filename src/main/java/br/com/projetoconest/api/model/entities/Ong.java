@@ -28,6 +28,9 @@ public class Ong {
     private String name;
 
     @Column(nullable = false)
+    private String cnpj;
+
+    @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)

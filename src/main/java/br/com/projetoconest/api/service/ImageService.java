@@ -4,7 +4,10 @@ import br.com.projetoconest.api.model.entities.Image;
 import br.com.projetoconest.api.repository.ImageRepository;
 import br.com.projetoconest.api.utils.ImageUtility;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -36,11 +39,14 @@ public class ImageService {
                 .image(ImageUtility.decompressImage(dbImage.get().getImage())).build();
     }
 
-    public byte[] getImage(String name) {
+    public ResponseEntity<byte[]> getImage(@PathVariable("name") String name) {
 
         final Optional<Image> dbImage = imageRepository.findByName(name);
 
-        return ImageUtility.decompressImage(dbImage.get().getImage());
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.valueOf(dbImage.get().getType()))
+                .body(ImageUtility.decompressImage(dbImage.get().getImage()));
     }
 
 }

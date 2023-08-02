@@ -20,8 +20,18 @@ public class OngResource {
     private final OngService ongService;
 
     @PostMapping
-    public ResponseEntity<MessageResponse> saveOng(@RequestBody OngRequest request) throws IOException {
+    public ResponseEntity<MessageResponse> saveOng(@RequestBody OngRequest request) {
         return ongService.saveOng(request);
+    }
+
+    @PutMapping("/images/{id}")
+    public ResponseEntity<MessageResponse> updateOng(@PathVariable Long id, @RequestParam(required = false, name = "profilePicture") MultipartFile profilePicture, @RequestParam(required = false, name = "bannerPicture") MultipartFile bannerPicture) throws IOException {
+        return ongService.updateOngImages(id, profilePicture, bannerPicture);
+    }
+
+    @GetMapping("/images/{name}")
+    public ResponseEntity<byte[]> getOngImages(@PathVariable String name) {
+        return ongService.getImage(name);
     }
 
 }
